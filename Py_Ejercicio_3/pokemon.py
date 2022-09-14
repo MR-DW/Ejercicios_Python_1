@@ -6,18 +6,35 @@ class Pokemones:
         self.ataque_comun=ataque_comun
         self.puntos_salud=puntos_salud
     
-    def atacar(self):
-        print(f'Usó {self.ataque_especial}')
+    def atacar(self,arg):
+        a='a'
+        b='b'
+        if arg == a:
+            print(f'Usó {self.ataque_comun}')
+        elif arg == b:
+            print(f'Usó {self.ataque_especial}')
 
-    def recibir_ataque(self):
-        self.puntos_salud -= 15
-        print(f'Perdió 15 puntos de salud, su vida total es: {self.puntos_salud}')
+    def recibir_ataque(self, arg):
+        a = 25
+        b = 45
+        if arg == a:
+            self.puntos_salud -= a
+            print(f'Perdió puntos de salud, su vida total es: {self.puntos_salud}')
+        elif arg == b:
+            self.puntos_salud -= b
+            print(f'Perdió puntos de salud, su vida total es: {self.puntos_salud}')
+        else:
+            print('No existe ese ataque')
     
     def esquivar(self):
-        print('Esquivó tu ataque')
+        print('Esquivó su ataque')
     
-    def descansar(self):
-        print(f'Recuperó su salud {self.puntos_salud + 100}')
+    def regresar(self):
+        if self.puntos_salud <= 0:
+            print('Regresa...') 
+        else:
+            print('No puede regresar, aún tiene puntos de salud')   
+
 
 class Pokemon(Pokemones):
     def __init__(self, nombre, tipo, ataque_especial, ataque_comun, puntos_salud):
@@ -32,14 +49,21 @@ bolbasur = Pokemon('Bolbasur', 'Planta', 'Hojas Filosas', 'Embestida', 100)
 # print(f' Mi segundo pokemon es {pokemon_2.nombre} es de tipo {pokemon_2.tipo} quiero enseñarle {pokemon_2.ataque_especial}, \n solo sabe {pokemon_2.ataque_comun}.')
 
 print(charmander.nombre)
-charmander.atacar()
+charmander.atacar('a')
 print(bolbasur.nombre)
-bolbasur.recibir_ataque()
+bolbasur.recibir_ataque(25)
 print(bolbasur.nombre)
-bolbasur.atacar()
+bolbasur.atacar('a')
 print(charmander.nombre)
 charmander.esquivar()
 print(charmander.nombre)
-charmander.atacar()
+charmander.atacar('b')
 print(bolbasur.nombre)
-bolbasur.recibir_ataque()
+bolbasur.recibir_ataque(45)
+bolbasur.regresar()
+print(charmander.nombre)
+charmander.atacar('b')
+print(bolbasur.nombre)
+bolbasur.recibir_ataque(45)
+print(bolbasur.nombre)
+bolbasur.regresar()
